@@ -1,0 +1,96 @@
+{% extends 'Admin/admin_home.html' %}
+{% block content %}
+<style type="text/css">
+	th{
+		background-color: green;
+		color: white;
+	}
+</style>
+<section>
+        <div class="container">
+        <div class="text-center">
+        <h1>Owner List</h1>
+        <br>
+        </div>
+        </div>
+     </section>
+     <section class="section-background">
+     <div class="container">
+
+
+     	<table border="1" class="table">
+     		<tr>
+     			<th>ID Proof</th>
+     			<th>Name</th>
+     			<th>Phone</th>
+     			<th>Email</th>
+    
+                <th></th>
+
+     		</tr>
+     		{% for x in var %}
+     		<tr>
+     			<td><img src="{{x.idproof.url}}" height="100px" width="100px"></td>
+     			<td>{{x.name}}</td>
+     			<td>{{x.phone}}</td>
+     			<td>{{x.email}}</td>
+     		
+                <td><a href="/admin_owner_approve/?id={{x.id}}" class="btn btn-success">Approve</a> <a href="/admin_owner_reject/?id={{x.id}}" class="btn btn-success">Reject</a></td>
+
+     		</tr>
+     		{% endfor %}
+     	</table>
+        <div class="text-center">
+        <h1>Approved List</h1>
+        </div>
+        <table border="1" class="table">
+            <tr>
+                <th>ID Proof</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+              
+                <th></th>
+            </tr>
+            {% for x in var1 %}
+            <tr>
+                <td><img src="{{x.idproof.url}}" height="100px" width="100px"></td>
+                <td>{{x.name}}</td>
+                <td>{{x.phone}}</td>
+                <td>{{x.email}}</td>
+                
+                <td> <a href="/admin_owner_reject/?id={{x.id}}" class="btn btn-success">Reject</a></td>
+
+            </tr>
+            {% endfor %}
+        </table>
+        <div class="text-center">
+        <h1>Rejected List</h1>
+        </div>
+        <table border="1" class="table">
+            <tr>
+                <th>ID Proof</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+         
+                
+            </tr>
+            {% for x in var2 %}
+            <tr>
+                <td><img src="{{x.idproof.url}}" height="100px" width="100px"></td>
+                <td>{{x.name}}</td>
+                <td>{{x.phone}}</td>
+                <td>{{x.email}}</td>
+          
+                
+
+            </tr>
+            {% endfor %}
+        </table>
+
+
+
+     </div>
+     </section>
+{% endblock %}

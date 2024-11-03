@@ -1,0 +1,122 @@
+{% extends 'Buyer/buyer_home.html' %}
+{% block content %}
+<style type="text/css">
+	th{
+		background-color: green;
+		color: white;
+	}
+</style>
+
+        <div class="container">
+        <div class="text-center">
+        <h1>Pending</h1>
+        <br>
+        </div>
+        </div>
+
+     <section class="section-background">
+     <div class="container">
+
+
+     	<table border="1" class="table">
+     		<tr>
+     			<th>Sl.No.</th>
+     			<th>Date</th>
+     			<th>Driver Details</th>
+     			<th>From date & To date</th>
+     			<th>Status</th>
+
+
+     		</tr>
+     		{% for x in var %}
+     		<tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{x.date}}</td>
+     			<td>{{x.driver_email}}<br>{{x.driver_phone}}</td>
+     			<td>{{x.fromdate}}<br>{{x.todate}}<br>{{x.hrs}}</td>
+     			<td>{{x.status}}</td>
+
+
+
+
+
+     		</tr>
+
+     		{% endfor %}
+     	</table>
+		   <div class="container">
+        <div class="text-center">
+        <h1>Approved</h1>
+        <br>
+        </div>
+        </div>
+
+     	<table border="1" class="table">
+     		<tr>
+     			<th>Sl.No.</th>
+     			<th>Date</th>
+     			<th>Driver Details</th>
+     			<th>From date & To date</th>
+     			<th>Status</th>
+					<th>Payment</th>
+
+
+     		</tr>
+     		{% for x in var2 %}
+     		<tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{x.date}}</td>
+     			<td>{{x.driver_email}}<br>{{x.driver_phone}}</td>
+     			<td>{{x.fromdate}}<br>{{x.todate}}<br>{{x.hrs}}<br>{{x.totalprice}}</td>
+     			<td>{{x.status}}</td>
+				
+				  <td><a href="/buyer_driver_payment/?id={{x.id}}" class="btn btn-success">Pay</a>
+
+
+
+
+
+     		</tr>
+
+     		{% endfor %}
+     	</table>
+		   <div class="container">
+        <div class="text-center">
+        <h1>Rejected</h1>
+        <br>
+        </div>
+        </div>
+
+     	<table border="1" class="table">
+     		<tr>
+     			<th>Sl.No.</th>
+     			<th>Date</th>
+     			<th>Driver Details</th>
+     			<th>From date & To date</th>
+     			<th>Status</th>
+<!--					<th>Payment</th>-->
+
+
+     		</tr>
+     		{% for x in var3 %}
+     		<tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{x.date}}</td>
+     			<td>{{x.driver_email}}<br>{{x.driver_phone}}</td>
+     			<td>{{x.fromdate}}<br>{{x.todate}}<br>{{x.hrs}}<br></td>
+     			<td>{{x.status}}</td>
+<!--				  <td><a href="/buyer_driver_payment/?id={{x.id}}" class="btn btn-success">Pay</a>-->
+
+
+
+
+
+     		</tr>
+
+     		{% endfor %}
+     	</table>
+
+
+     </div>
+     </section>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'Buyer/buyer_home.html' %}
+{% block content %}
+
+<script type="text/javascript">
+  function GetDays(){
+          var dropdt = new Date(document.getElementById("drop_date").value);
+          var pickdt = new Date(document.getElementById("pick_date").value);
+          return parseInt((dropdt - pickdt) / (24 * 3600 * 1000));
+  }
+
+  function cal(){
+  if(document.getElementById("drop_date")){
+      var num_days = GetDays();
+      document.getElementById("numdays2").value = num_days;
+      var price_per_day = document.getElementById("price_per_day_input").value;
+     
+      var total_price = num_days * price_per_day;
+      document.getElementById("total_price_input").value = total_price;
+  }  
+}
+
+</script>
+        <div class="container" style="background-color:  #d9f2e6;padding-top: 100px;">
+        <div class="text-center">
+        <h1>Request Form</h1>
+        <br>
+        </div>
+        </div>
+      <div class="container" style="background-color:  #d9f2e6;padding-bottom: 100px;">
+        
+     <form action="/buyer_request_product/" method="post" >
+       {% csrf_token %}
+       
+       <div id="reserve_form">
+          <input type="hidden" name="ii" value="{{ii}}">
+
+        <div id="pickup_date"><p><label  >From Date:</label><input type="date" class="form-control" id="pick_date" name="fromdate" onchange="cal()"</p></div>
+    
+        <div id="dropoff_date"><p><label >To-Date:</label><input type="date"  id="drop_date" class="form-control" name="todate" onchange="cal()"/></p></div>
+    
+        <div id="numdays"><label >Number of days:</label><input type="text" class="form-control"  id="numdays2"  name="hrs"/></div><br>
+    
+        <div id="price_per_day">
+          
+          <label >Price per day:</label>
+          <input type="text" class="form-control" id="price_per_day_input" name="price_per_day" value="{{ price }}" />
+          
+        </div>
+
+
+        <div id="total_price">
+            <label >Total price:</label>
+            <input type="text" class="form-control" id="total_price_input" name="total_price" />
+        </div>
+        <div><button type="submit" class="btn btn-success">Submit</button> </div> 
+        </div>
+
+     </form>
+   </div>
+  
+     <!-- </section> -->
+ {% endblock %}

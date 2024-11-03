@@ -1,0 +1,107 @@
+{% extends 'Driver/driver_home.html' %}
+{% block content %}
+<style type="text/css">
+	th{
+		background-color: green;
+		color: white;
+	}
+</style>
+<section>
+        <div class="container">
+        <div class="text-center">
+        <h1>All Request</h1>
+        <br>
+        </div>
+        </div>
+     </section>
+     <section class="section-background">
+     <div class="container">
+
+     	<table border="1" class="table">
+     		<tr>
+     			<th>Sl.No.</th>
+     			<th> Request Date</th>
+     			<th>Customer Details</th>
+     			<th>From date & To date</th>
+                <th>My email</th>
+     			<th>Status</th>
+                <th></th>
+     		</tr>
+     		{% for x in var %}
+     		<tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{x.date}}</td>
+     			<td>{{x.buyer_id.name}}<br>{{x.buyer_id.email}}<br>{{x.buyer_id.phone}}</td>
+     			<td>{{x.fromdate}}<br>{{x.todate}}<br>{{x.hrs}}</td>
+                <td>{{x.driver_email}}</td>
+     			<td>{{x.status}}</td>
+                <td><a href="/driver_approve_request/?id={{x.id}}" class="btn btn-success">Approve</a> <a href="/driver_reject_request/?id={{x.id}}" class="btn btn-success">Reject</a></td>
+     		</tr>
+     		{% endfor %}
+     	</table>
+
+        <br>
+        <h2>Approved List</h2>
+        <table border="1" class="table">
+            <tr>
+                <th>Sl.No.</th>
+                <th> Request Date</th>
+                <th>Customer Details</th>
+                <th>From date & To date</th>
+                <th>My email</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+            {% for x in var1 %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{x.date}}</td>
+                <td>{{x.buyer_id.name}}<br>{{x.buyer_id.email}}<br>{{x.buyer_id.phone}}</td>
+                <td>{{x.fromdate}}<br>{{x.todate}}<br>{{x.hrs}}</td>
+                <td>{{x.driver_email}}</td>
+                <td>{{x.status}}</td>
+                <td><a href="/driver_reject_request/?id={{x.id}}" class="btn btn-success">Reject</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <br>
+        <h2>Rejected List</h2>
+        <table border="1" class="table">
+            <tr>
+                <th>Sl.No.</th>
+                <th> Request Date</th>
+                <th>Customer Details</th>
+                <th>From date & To date</th>
+                <th>My email</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+            {% for x in var2 %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{x.date}}</td>
+                <td>{{x.buyer_id.name}}<br>{{x.buyer_id.email}}<br>{{x.buyer_id.phone}}</td>
+                <td>{{x.fromdate}}<br>{{x.todate}}<br>{{x.hrs}}</td>
+                <td>{{x.driver_email}}</td>
+                <td>{{x.status}}</td>
+                <td><a href="/driver_approve_request/?id={{x.id}}" class="btn btn-success">Approve</a></td>
+            </tr>
+            {% endfor %}
+            {% for x in var3 %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{x.date}}</td>
+                <td>{{x.buyer_id.name}}<br>{{x.buyer_id.email}}<br>{{x.buyer_id.phone}}</td>
+                <td>{{x.fromdate}}<br>{{x.todate}}<br>{{x.hrs}}</td>
+                <td>{{x.driver_email}}</td>
+                <td>{{x.status}}</td>
+                <td><a href="/driver_approve_request/?id={{x.id}}" class="btn btn-success">Approve</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+
+
+     </div>
+     </section>
+{% endblock %}

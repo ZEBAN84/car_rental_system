@@ -1,0 +1,41 @@
+{% extends 'Owner/owner_home.html' %}
+{% block content %}
+<!-- <style type="text/css">
+	th{
+		background-color: green;
+		color: white;
+	}
+</style> -->
+<section>
+        <div class="container">
+        <div class="text-center">
+        <h1>Edit Product</h1>
+        <br>
+        </div>
+        </div>
+     </section>
+     <section class="section-background">
+     <div class="container">
+
+    <form action="/owner_edit_product/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+     	<table border="1" class="table">
+            {% for x in var %}
+            <input type="hidden" name="ii" value="{{ii}}" >
+
+     		<tr><th>Image</th><td><img src="{{x.img.url}}" height="100px" width="100px"></td></tr>
+            <tr><th>Product Name</th><td>{{x.name}}</td></tr>
+            <tr><th>Car Number</th><td>{{x.car_number}}</td></tr>
+            <tr><th>No.Of.Seats</th><td>{{x.seat}}</td></tr>
+            <tr><th>specification</th><td><input type="text" name="specification" value="{{x.specification}}" class="form-control"></td></tr>
+            <tr><th>Amount</th><td><input type="text" name="price" value="{{x.price}}" class="form-control"></td></tr>
+            <tr><td colspan="2"><input type="submit" value="UPDATE" class="btn btn-success"></td></tr>
+            {% endfor %}
+
+     	</table>
+     </form>
+
+
+     </div>
+     </section>
+{% endblock %}

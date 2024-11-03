@@ -1,0 +1,55 @@
+{% extends 'Owner/owner_home.html' %}
+{% block content %}
+<!-- <style type="text/css">
+	th{
+		background-color: green;
+		color: white;
+	}
+</style> -->
+<section>
+        <div class="container">
+        <div class="text-center">
+        <h1>Add Products For Rent</h1>
+        </div>
+        </div>
+     </section>
+
+     <section id="contact">
+<div class="container">
+               <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                         <form id="contact-form" action="/owner_add_product/" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                              <div class="col-md-12 col-sm-12">
+                                   <label style="color: white;">Upload Product Images</label>
+                                   <input type="file" class="form-control"  name="img" required>
+                                   <input type="text" class="form-control" placeholder="Enter Product name" name="name" required>
+                                   <input type="text" class="form-control" placeholder="Enter car number" name="number" required>
+                                   <input type="text" class="form-control" placeholder="Enter number of seats" name="seat" required>  
+                                   <textarea class="form-control" rows="6" placeholder="specifications in detail.." name="specification" required></textarea>
+
+                                    <input type="number" class="form-control" placeholder="Enter Amount per Hour" name="price" required>
+                    
+                                   
+                              </div>
+                              <div class="tacbox">
+                                   <input id="checkbox" type="checkbox"  required/>
+                                   <label for="checkbox"> I agree to these <a href="#">That the vechichle that i adding has Valid Registration and Insurance no Complaints and no Police Complaints</a>.</label>
+                                 </div>
+
+                              <div class="col-md-4 col-sm-12">
+                                   <input type="submit" class="form-control" name="send message" value="ADD ">
+                              </div>
+                         </form>
+                    </div>
+
+                    <div class="col-md-6 col-sm-12">
+                         <div class="contact-image">
+                              <img src="/static/images/contact-1-600x400.jpg" class="img-responsive" alt="">
+                         </div>
+                    </div>
+
+               </div>
+          </div>
+      </section>
+{% endblock %}

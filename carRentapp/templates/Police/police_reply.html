@@ -1,0 +1,31 @@
+{% extends 'Police/police_home.html' %}
+{% block content %}
+
+<!-- <section > -->
+        <div class="container" style="background-color:  #d9f2e6;padding-top: 100px;">
+        <div class="text-center">
+        <h1>Reply</h1>
+        <br>
+        </div>
+        </div>
+     <!-- </section> -->
+    
+      <div class="container" style="background-color:  #d9f2e6;padding-bottom: 100px;">
+        
+     <form action="/police_reply/" method="post" >
+       {% csrf_token %}
+       <input type="hidden" name="ii" value="{{ii}}">
+       <label>Subject:</label>
+       {% for x in sub %}
+       <input type="text" name="subject" class="form-control" value="{{x.subject}}">
+       {% endfor %}
+       <label>Reply:</label>
+       <textarea name="reply" class="form-control" placeholder="Reply Here.." rows="6"></textarea>
+       <br>
+       <button type="submit" class="btn btn-success">Submit</button>
+
+     </form>
+   </div>
+   <!--  <section class="section-background" style="background-color: #ebebe0;">
+     </section> -->
+{% endblock %}

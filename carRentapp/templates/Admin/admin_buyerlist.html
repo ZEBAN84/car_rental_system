@@ -1,0 +1,45 @@
+{% extends 'Admin/admin_home.html' %}
+{% block content %}
+<style type="text/css">
+	th{
+		background-color: green;
+		color: white;
+	}
+</style>
+<section>
+        <div class="container">
+        <div class="text-center">
+        <h1>Buyer List</h1>
+        <br>
+        </div>
+        </div>
+     </section>
+     <section class="section-background">
+     <div class="container">
+
+
+     	<table border="1" class="table">
+     		<tr>
+     			<th>ID Proof</th>
+     			<th>Name</th>
+     			<th>Phone</th>
+     			<th>Email</th>
+     	
+
+     		</tr>
+     		{% for x in var %}
+     		<tr>
+     			<td><img src="{{x.idproof.url}}" height="100px" width="100px"></td>
+     			<td>{{x.name}}</td>
+     			<td>{{x.phone}}</td>
+     			<td>{{x.email}}</td>
+     		
+
+     		</tr>
+     		{% endfor %}
+     	</table>
+
+
+     </div>
+     </section>
+{% endblock %}

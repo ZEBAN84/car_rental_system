@@ -1,0 +1,39 @@
+{% extends 'Driver/driver_home.html' %}
+{% block content %}
+<!-- <style type="text/css">
+	th{
+		background-color: green;
+		color: white;
+	}
+</style> -->
+<section>
+        <div class="container">
+        <div class="text-center">
+        <h1>Edit Profile</h1>
+        <br>
+        </div>
+        </div>
+     </section>
+     <section class="section-background">
+     <div class="container">
+
+    <form action="/driver_edit_prof/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+     	<table border="1" class="table">
+            {% for x in var %}
+     		<tr><th>ID Proof</th><td><img src="{{x.idproof.url}}" height="100px" width="100px"></td></tr>
+            <tr><th>Name</th><td>{{x.name}}</td></tr>
+            <tr><th>Address</th><td><input type="text" name="address" value="{{x.address}}" class="form-control"></td></tr>
+            <tr><th>Phone</th><td><input type="text" name="phone" value="{{x.phone}}" class="form-control"></td></tr>
+            <tr><th>Email</th><td><input type="text" name="email" value="{{x.email}}" class="form-control"></td></tr>
+            <tr><th>Password</th><td><input type="text" name="pswd" value="{{x.pswd}}" class="form-control"></td></tr>
+            <tr><td colspan="2"><input type="submit" value="UPDATE" class="btn btn-success"></td></tr>
+            {% endfor %}
+
+     	</table>
+     </form>
+
+
+     </div>
+     </section>
+{% endblock %}

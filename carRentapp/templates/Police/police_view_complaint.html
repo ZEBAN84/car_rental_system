@@ -1,0 +1,81 @@
+{% extends 'Police/police_home.html' %}
+{% block content %}
+<style type="text/css">
+	th{
+		background-color: green;
+		color: rgb(35, 33, 33);
+	}
+</style>
+<section>
+        <div class="container">
+        <div class="text-center">
+        <h1>All Complaints</h1>
+        <br>
+        </div>
+        </div>
+     </section>
+     <section class="section-background">
+     <div class="container">
+
+     	<table border="1" class="table">
+     		<tr>
+     			<th>Sl.No.</th>
+     			<th>Request Date</th>
+     			<th>User Details</th>
+     			<th>Complaint</th>
+                <th>Location Details</th>
+                <th>My email</th>
+     			<th>Status</th>
+                <th></th>
+     		</tr>
+     		{% for x in var %}
+     		<tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{x.date}}</td>
+     			<td>{{x.buyer_id.name}}<br>{{x.buyer_id.email}}<br>{{x.buyer_id.phone}}</td>
+     			<td>Subject:{{x.subject}}<br>More Detail:{{x.description}}</td>
+                <td>{{x.location}}</td>
+                <td>{{x.police_email}}</td>
+     			<td>{{x.status}}</td>
+                <td><a href="/police_reply/?id={{x.id}}" class="btn btn-success">Send Reply</a></td>
+     		</tr>
+     		{% endfor %}
+     	</table>
+
+        <br>
+        <h2>Replied Complaints</h2>
+        <table border="1" class="table">
+            <tr>
+                <th>Sl.No.</th>
+                <th>Request Date</th>
+                <th>User Details</th>
+                <th>Complaint</th>
+                <th>Location Details</th>
+               
+                <th>Status</th>
+                <th>Reply</th>
+                <th></th>
+            </tr>
+            {% for x in var1 %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{x.date}}</td>
+                <td>{{x.buyer_id.name}}<br>{{x.buyer_id.email}}<br>{{x.buyer_id.phone}}</td>
+                <td>Subject:{{x.subject}}<br>More Detail:{{x.description}}</td>
+                <td>{{x.location}}</td>
+                
+                <td>{{x.status}}</td>
+                <td>{{x.reply}}</td>
+
+                <td><a href="/police_remove_complaint/?id={{x.id}}" class="btn btn-success">Remove</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <br>
+        
+
+
+     </div>
+     </section>
+{% endblock %}

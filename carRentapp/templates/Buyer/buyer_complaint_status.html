@@ -1,0 +1,49 @@
+{% extends 'Buyer/buyer_home.html' %}
+{% block content %}
+<style type="text/css">
+	th{
+		background-color: green;
+		color: white;
+	}
+</style>
+<section>
+        <div class="container">
+        <div class="text-center">
+        <h1>Complaint Status</h1>
+        <br>
+        </div>
+        </div>
+     </section>
+     <section class="section-background">
+     <div class="container">
+
+
+     	<table border="1" class="table">
+     		<tr>
+     			<th>Sl.No.</th>
+     			<th>Date</th>
+     			<th>Subject</th>
+                <th>Description</th>
+     			<th>Location Details</th>
+     			<th>Police email</th>
+                <th>Status</th>
+                <th>Reply</th>
+     		</tr>
+     		{% for x in var %}
+     		<tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{x.date}}</td>
+     			<td>{{x.subject}}</td>
+     			<td>{{x.description}}</td>
+     			<td>{{x.location}}</td>
+     			<td>{{x.police_email}}</td>
+                <td>{{x.status}}</td>
+                <td>{{x.reply}}</td>
+     		</tr>
+     		{% endfor %}
+     	</table>
+
+
+     </div>
+     </section>
+{% endblock %}

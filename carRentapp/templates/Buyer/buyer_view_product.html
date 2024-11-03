@@ -1,0 +1,57 @@
+{% extends 'Buyer/buyer_home.html' %}
+{% block content %}
+<style type="text/css">
+	th{
+		background-color: green;
+		color: white;
+	}
+    div.gallery {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 200px;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+</style>
+<section>
+        <div class="container">
+        <div class="text-center">
+        <h1>Rent Products</h1>
+        <br>
+        </div>
+        </div>
+     </section>
+     <section class="section-background">
+     <div class="container">
+      {% if var %}
+
+         {% for x in var %}
+        <div class="gallery">
+    <img src="{{x.img.url}}" width="1000" height="400">
+  <div class="desc">{{x.name}}<br>Car Number:{{x.car_number}}<br>No.Of.Seats:{{x.seat}}<br>{{x.specification}}<br>Amount:{{x.price}}/-hour<br>
+    <a href="/buyer_request_product/?id={{x.id}}" class="btn btn-success">Request</a>
+  </div>
+</div>
+ {% endfor %}
+ {% else %}
+ <h3 style="color: red; text-align: center;">No more pending cars </h3>
+ {% endif %}
+
+
+
+     </div>
+     </section>
+{% endblock %}

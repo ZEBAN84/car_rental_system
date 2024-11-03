@@ -1,0 +1,74 @@
+
+{% extends 'Buyer/buyer_home.html' %}
+{% block content %}
+<style type="text/css">
+	th{
+		background-color: #84C639;
+		color: black;
+	}
+</style>
+<h3 class="text-center">PRODUCT</h3>
+
+<div class="w3l_banner_nav_right">
+	<div class="container-fluid" style="padding-top: 100px;">
+	  {% for x in var %}
+		<div class="row">
+			<div class="col-md-4 p-10">
+				<h5>{{x.name}}</h5>
+				<img id="example" src="{{x.img.url}}" alt=" " class="img-responsive" />
+			  </div>
+			  
+		  <div class="col-md-4">
+			<div class="w3agile_description">
+			  <h4>Description :</h4>
+			  <p>{{x.specification}}.</p>
+			</div>
+			<div class="snipcart-item block">
+			  <div class="snipcart-thumb agileinfo_single_right_snipcart">
+				<h4>RS.{{x.price}}/Per Hr.</h4>
+			  </div>	
+			</div>
+		  </div>
+		  <div class="col-md-4 agileinfo_single_right" style="display: block;">
+			<a href="#demo" style="">Add Your Reviews</a>
+			<div id="demo">
+			  <form action="/buyer_product_review/" method="post">
+				{% csrf_token %}
+				<input type="hidden" name="ii" value="{{ii}}">
+				<br>
+				<input type="text" name="review" class="form-control" required="" placeholder="Type Your Reviews Here..."><br>
+				<input type="submit" name="btn" class="btn btn-info">
+			  </form>
+			</div>
+			<br>
+			{% for x in rev %}
+			  <p>{{x.user_id.name}}:</p>
+			  <hr>
+			  <p><b>{{x.review}}</b></p>
+			  <hr>
+			{% endfor %}
+		  </div>
+		  
+		</div>
+		<div class="clearfix"> </div>
+	  {% endfor %}
+	</div>
+  </div>
+  {% endblock %}
+  
+
+
+<!-- <div class="rating1">
+						<span class="starRating">
+							<input id="rating5" type="radio" name="rating" value="5">
+							<label for="rating5">5</label>
+							<input id="rating4" type="radio" name="rating" value="4">
+							<label for="rating4">4</label>
+							<input id="rating3" type="radio" name="rating" value="3" checked>
+							<label for="rating3">3</label>
+							<input id="rating2" type="radio" name="rating" value="2">
+							<label for="rating2">2</label>
+							<input id="rating1" type="radio" name="rating" value="1">
+							<label for="rating1">1</label>
+						</span>
+					</div> -->

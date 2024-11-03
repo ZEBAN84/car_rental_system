@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section>
+  <div class="container mt-5">
+    <div class="text-center">
+      <h1 class="mb-4">Login Now</h1>
+    </div>
+  </div>
+</section>
+<!-- CONTACT -->
+<section id="contact" class="bg-light py-5" style="background-image: url('/static/images/your-image-here.jpg'); background-size: cover; background-position: center;">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <!-- <form id="contact-form" action="/login/" method="post" class="p-4 shadow-lg rounded bg-white"> -->
+          <form id="contact-form" action="/login/" method="post" class="p-4 shadow-lg rounded bg-white form-medium mx-auto" style="max-width: 600px;">
+ 
+          {%csrf_token %}
+          <div class="form-group">
+            <label for="email" class="font-weight-bold">Email Address</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter email address" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="pswd" class="font-weight-bold">Password</label>
+            <input type="password" class="form-control" id="pswd" placeholder="Enter Your Password" name="pswd" required>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary px-4 shadow" name="btn" value="Login">Login</button>
+          </div>
+        </form>
+      </div>
+      <!-- <div class="col-lg-6">
+        <img src="/static/images/register.jpg" class="img-fluid rounded shadow" alt="">
+      </div> -->
+    </div>
+  </div>
+</section>
+{% endblock %}

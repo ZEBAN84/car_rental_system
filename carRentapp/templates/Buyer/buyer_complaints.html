@@ -1,0 +1,39 @@
+{% extends 'Buyer/buyer_home.html' %}
+{% block content %}
+
+<!-- <section > -->
+        <div class="container" style="background-color:  #d9f2e6;padding-top: 100px;">
+        <div class="text-center">
+        <h1>Send Your Complaints</h1>
+        <br>
+        </div>
+        </div>
+     <!-- </section> -->
+    
+      <div class="container" style="background-color:  #d9f2e6;padding-bottom: 100px;">
+        
+     <form action="/buyer_complaints/" method="post" >
+       {% csrf_token %}
+       <input type="hidden" name="ii" value="{{ii}}">
+        <label>Select Police:</label>
+        <select name="police" class="form-control">
+          <option>--select one--</option>
+          {% for x in police %}
+          <option value="{{x.email}}">{{x.name}}, {{x.email}}</option>
+          {% endfor %}
+        </select>
+       
+       <label>Subject:</label>
+       <input type="text" name="subject" class="form-control" placeholder="Subject..">
+       <label>Description:</label>
+       <textarea name="description" class="form-control" placeholder="More Description.."></textarea>
+       <label>Location Details:</label>
+       <textarea name="location" class="form-control" placeholder="Location Address"></textarea>
+       <br>
+       <button type="submit" class="btn btn-success">Submit</button>
+
+     </form>
+   </div>
+   <!--  <section class="section-background" style="background-color: #ebebe0;">
+     </section> -->
+{% endblock %}

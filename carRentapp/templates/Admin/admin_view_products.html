@@ -1,0 +1,64 @@
+{% extends 'Admin/admin_home.html' %}
+{% block content %}
+<style type="text/css">
+	th{
+		background-color: green;
+		color: white;
+	}
+    div.gallery {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 200px;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+</style>
+<section>
+        <div class="container">
+        <div class="text-center">
+        <h1>Rent Products</h1>
+        <br>
+        </div>
+        </div>
+     </section>
+     <div class="container-fluid">
+    
+      <div class="row">
+        {% for x in var %}
+        <div class="col-md-3">
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{x.img.url}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{x.name}}</h5>
+              <p class="card-text">Car Number: {{x.car_number}}</p>
+              <p class="card-text">Car Number:No.Of.Seats: {{x.seat}}</p>
+              <p class="card-text">Specification: {{x.specification}}</p>
+              <p class="card-text">Amount: {{x.price}}/-hour</p>
+              <!-- <a href="/buyer_request_product/?id={{x.id}}/" class="btn btn-primary">Rent</a>
+			  <a href="" class="btn btn-warning">Review</a> -->
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+   
+  </div>
+
+
+
+     </div>
+     </section>
+{% endblock %}

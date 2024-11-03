@@ -1,0 +1,102 @@
+{% extends 'Owner/owner_home.html' %}
+{% block content %}
+<style type="text/css">
+	th{
+		background-color: green;
+		color: white;
+	}
+</style>
+<section>
+        <div class="container">
+        <div class="text-center">
+        <h1>All Request</h1>
+        <br>
+        </div>
+        </div>
+     </section>
+     <section class="section-background">
+     <div class="container">
+
+     	<table border="1" class="table">
+     		<tr>
+     			<th>Sl.No.</th>
+     			<th> Request Date</th>
+     			<th>Product Image</th>
+                <th>Product Details</th>
+     			<th>From date & To date</th>
+                <th>Buyer Details</th>
+     			<th>Status</th>
+                <th></th>
+     		</tr>
+     		{% for x in var %}
+     		<tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{x.date}}</td>
+     			<td><img src="{{x.product_id.img.url}}" height="100px" width="100px"></td>
+     			<td>{{x.product_id.name}}<br>{{x.product_id.car_number}}<br>{{x.product_id.seat}}<br>{{x.product_id.specification}}<br>{{x.product_id.price}}</td>
+     			<td>{{x.fromdate}}<br>{{x.todate}}<br>{{x.hrs}}<br>{{x.totalprice}}</td>
+                <td>{{x.buyer_id.name}}<br>{{x.buyer_id.email}}<br>{{x.buyer_id.phone}}</td>
+     			<td>{{x.status}}</td>
+                <td><a href="/owner_approve_request/?id={{x.id}}" class="btn btn-success">Approve</a> <a href="/owner_reject_request/?id={{x.id}}" class="btn btn-success">Reject</a></td>
+     		</tr>
+     		{% endfor %}
+     	</table>
+
+        <br>
+        <h2>Approved List</h2>
+        <table border="1" class="table">
+            <tr>
+                <th>Sl.No.</th>
+                <th> Request Date</th>
+                <th>Product Image</th>
+                <th>Product Details</th>
+                <th>From date & To date</th>
+                <th>Buyer Details</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+            {% for x in var1 %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{x.date}}</td>
+                <td><img src="{{x.product_id.img.url}}" height="100px" width="100px"></td>
+                <td>{{x.product_id.name}}<br>{{x.product_id.car_number}}<br>{{x.product_id.seat}}<br>{{x.product_id.specification}}<br>{{x.product_id.price}}</td>
+                <td>{{x.fromdate}}<br>{{x.todate}}<br>{{x.hrs}}</td>
+                <td>{{x.buyer_id.name}}<br>{{x.buyer_id.email}}<br>{{x.buyer_id.phone}}</td>
+                <td>{{x.status}}</td>
+                <td><a href="/owner_reject_request/?id={{x.id}}" class="btn btn-success">Reject</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <br>
+        <h2>Rejected List</h2>
+        <table border="1" class="table">
+            <tr>
+                <th>Sl.No.</th>
+                <th> Request Date</th>
+                <th>Product Image</th>
+                <th>Product Details</th>
+                <th>From date & To date</th>
+                <th>Buyer Details</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+            {% for x in var2 %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{x.date}}</td>
+                <td><img src="{{x.product_id.img.url}}" height="100px" width="100px"></td>
+                <td>{{x.product_id.name}}<br>{{x.product_id.car_number}}<br>{{x.product_id.seat}}<br>{{x.product_id.specification}}<br>{{x.product_id.price}}</td>
+                <td>{{x.fromdate}}<br>{{x.todate}}<br>{{x.hrs}}</td>
+                <td>{{x.buyer_id.name}}<br>{{x.buyer_id.email}}<br>{{x.buyer_id.phone}}</td>
+                <td>{{x.status}}</td>
+                <td><a href="/owner_approve_request/?id={{x.id}}" class="btn btn-success">Approve</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+
+
+     </div>
+     </section>
+{% endblock %}

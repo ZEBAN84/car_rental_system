@@ -1,0 +1,47 @@
+{% extends 'Owner/owner_home.html' %}
+{% block content %}
+<!-- <style type="text/css">
+	th{
+		background-color: green;
+		color: white;
+	}
+</style> -->
+<section>
+        <div class="container">
+        <div class="text-center">
+        <h1>Send Feedback</h1>
+        </div>
+        </div>
+     </section>
+
+     <section id="contact">
+<div class="container">
+               <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                         <form id="contact-form" action="/owner_feedback/" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                              <div class="col-md-12 col-sm-12">
+                                   {% for x in var %}
+                                   <input type="text" class="form-control"  name="email" value="{{x.email}}" required>
+                                   {% endfor %}
+                                   <textarea class="form-control" rows="6" placeholder="Type your feedback " name="feedback" required></textarea>
+                    
+                                   
+                              </div>
+
+                              <div class="col-md-4 col-sm-12">
+                                   <input type="submit" class="form-control" name="btn" value="Send ">
+                              </div>
+                         </form>
+                    </div>
+
+                    <div class="col-md-6 col-sm-12">
+                         <div class="contact-image">
+                              <img src="/static/images/contact-1-600x400.jpg" class="img-responsive" alt="">
+                         </div>
+                    </div>
+
+               </div>
+          </div>
+      </section>
+{% endblock %}

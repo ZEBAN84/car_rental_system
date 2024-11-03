@@ -1,0 +1,42 @@
+ {% extends 'Driver/driver_home.html' %}
+{% block content %}
+ <style type="text/css">
+	th{
+		background-color: green;
+		color: white;
+	}
+</style>
+
+        <div class="container">
+        <div class="text-center">
+        <h1>Payment Details</h1>
+        <br>
+        </div>
+        </div>
+
+     <section class="section-background">
+     <div class="container">
+
+
+     	<table border="1" class="table">
+     		<tr>
+     			<th>Sl.No.</th>
+     			<th>Buyer Name</th>
+                <th>Card Name</th>
+                <th>Paid Amount</th>
+
+
+     		</tr>
+     		{% for x in var1 %}
+     		<tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{x.buyer_id.name}}</td>
+                <td>{{x.cardname}}</td>
+                <td>{{x.price}}</td>
+     		</tr>
+
+     		{% endfor %}
+     	</table>
+     </div>
+     </section>
+ {% endblock %}

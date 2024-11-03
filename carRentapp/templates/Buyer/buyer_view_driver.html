@@ -1,0 +1,61 @@
+{% extends 'Buyer/buyer_home.html' %}
+{% block content %}
+<style type="text/css">
+    th{
+        background-color: green;
+        color: white;
+    }
+    div.gallery {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 200px;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+</style>
+<section>
+        <div class="container">
+        <div class="text-center">
+        <h1>Driver List</h1>
+        <br>
+        </div>
+        </div>
+     </section>
+     <section class="section-background">
+     <div class="container">
+
+      <table border="0" class="table">
+        <tr>
+          <th>Sl.No.</th>
+          <th>Driver Name</th>
+          <th>Phone</th>
+          <th>Email Address</th>
+          <th></th>
+        </tr>
+        {% for x in var %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{x.name}}</td>
+          <td>{{x.phone}}</td>
+          <td>{{x.email}}</td>
+          <td><a href="/buyer_driver_request/?id={{x.id}}" class="btn btn-success">Request</a></td>
+        </tr>
+        {% endfor %}
+      </table>
+
+     </div>
+     </section>
+{% endblock %}
